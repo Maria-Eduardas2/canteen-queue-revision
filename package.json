@@ -15,5 +15,7 @@
     "prompt-sync": "^4.2.0",
     "prompts": "^2.4.2",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "module": "index.ts",
+  "type": "module"
 }

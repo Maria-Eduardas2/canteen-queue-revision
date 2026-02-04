@@ -22,7 +22,7 @@ export function criarProduto(nome: string, preco: number){
 export function editarProduto(id: number, nome:string, preco: number) {
   const erros = validarProduto({nome, preco});
   if (erros.length) throw new Error(erros.join(", "));
-  db.query("UPDATE produtos SET nome = ?, preco = ? WHERE id = ?").run(nome, preco);
+  db.query("UPDATE produtos SET nome = ?, preco = ? WHERE id = ?").run(nome, preco, id);
 }
 
 //inativar produto
