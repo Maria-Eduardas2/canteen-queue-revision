@@ -3,6 +3,7 @@ export const db = new Database("main.sqlite");
 
 db.run("PRAGMA foreign_keys = ON;");
 
+
 db.run(`CREATE TABLE IF NOT EXISTS produtos (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   nome TEXT NOT NULL,
@@ -12,13 +13,12 @@ db.run(`CREATE TABLE IF NOT EXISTS produtos (
 );
 `);
 
-console.table(db.query("SELECT * FROM usuarios").all());
-
 db.run(`
   CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
+    senha_hash TEXT NOT NULL,
     perfil TEXT NOT NULL DEFAULT 'ATENDENTE',
     ativo INTEGER NOT NULL DEFAULT 1,
     criado_em DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,

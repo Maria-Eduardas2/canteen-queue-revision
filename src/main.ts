@@ -1,29 +1,51 @@
-import { prompt } from "./input.ts";
-import { cadastrar, loginUser } from "./auth";
+import prompts from "prompts";
+import chalk from "chalk";
+import { menuAutenticacao, menuProdutos, menuPedidos } from "./menu";
+import { obterUsuarioLogado, fazerLogout } from "./auth";
 
-async function menu() {
-  console.log("\n1 - Cadastrar");
-  console.log("2 - Login");
-  console.log("0 - Sair");
+async function menuPrincipal() {
+  let executando = true;
 
-  const op = await prompt("Escolha: ");
+  console.log(chalk.bold.cyan("\n╔════════════════════════════════════╗"));
+  console.log(chalk.bold.cyan("║   BEM-VINDO À FILA DE CANTINA   ║"));
+  console.log(chalk.bold.cyan("╚════════════════════════════════════╝\n"));
 
-  if (op === "1") {
-    const nome = await prompt("Nome: ");
-    const login = await prompt("Login: ");
-    const senha = await prompt("Senha: ");
+  while (executando) {
+    const usuario = obterUsuarioLogado();
+    const { opcao } = await prompts({
+      type: "select",
+      name: "opcao",
+      message: chalk.bold(`Olá, ${usuario?.nome}! O que deseja fazer?`),
+      choices: [
+        { title: "Gerenciar Produtos", value: "produtos" },
+        { title: "Gerenciar Pedidos", value: "pedidos" },
+        { title: "Logout", value: "logout" },
+        { title: "Sair", value: "sair" },
+      ],
+    });
 
-    await cadastrar(nome, login, senha);
+    switch (opcao) {
+      case "produtos":
+        await menuProdutos();
+        break;
+      case "pedidos":
+        await menuPedidos();
+        break;
+      case "logout":
+        fazerLogout();
+        executando = false;
+        break;
+      case "sair":
+        console.log(chalk.green.bold("\n✓ Até logo!\n"));
+        executando = false;
+        process.exit(0);
+    }
   }
-
-  if (op === "2") {
-    const login = await prompt("Login: ");
-    const senha = await prompt("Senha: ");
-
-    await loginUser(login, senha);
-  }
-
-  if (op !== "0") await menu();
 }
 
-menu();
+async function iniciar() {
+  await menuAutenticacao();
+  await menuPrincipal();
+}
+
+iniciar();

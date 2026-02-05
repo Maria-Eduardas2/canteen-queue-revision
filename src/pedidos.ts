@@ -42,3 +42,7 @@ export function adicionarItem(id: number, qtd: number) {
 export function limparPedido() {
   pedidoAtual.itens = [];
 }
+
+export function obterItensPedido() {
+  return pedidoAtual.itens;
+}
