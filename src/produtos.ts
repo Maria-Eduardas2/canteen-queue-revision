@@ -10,7 +10,7 @@ export function listarProdutos(filtro: "ativos" | "todos" = "ativos", busca: str
         : "SELECT * FROM produtos WHERE ativo = 1 AND nome LIKE ? ORDER BY id DESC";
     return db.query(sql).all(termo);
 }
- 
+
 //criar produto
 export function criarProduto(nome: string, preco: number){
   const erros = validarProduto({nome, preco});
@@ -22,7 +22,7 @@ export function criarProduto(nome: string, preco: number){
 export function editarProduto(id: number, nome:string, preco: number) {
   const erros = validarProduto({nome, preco});
   if (erros.length) throw new Error(erros.join(", "));
-  db.query("UPDATE produtos SET nome = ?, preco = ? WHERE id = ?").run(nome, preco, id);
+  db.query("UPDATE produtos SET nome = ?, preco = ? WHERE id = ?").run(nome, preco);
 }
 
 //inativar produto
