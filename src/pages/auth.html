@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fila da Cantina</title>
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="tabs">
+                <button id="btnLogin" class="tab active">Entrar</button>
+                <button id="btnCadastro" class="tab">Cadastrar</button>
+            </div>
+
+            <img src="logo.png" class="logo">
+
+            <!-- LOGIN -->
+            <div id="loginForm">
+
+                <label>Email:</label>
+                <input type="email">
+
+                <label>Senha</label>
+                <input type="password">
+
+                <button class="btn">Entrar</button>
+
+            </div>
+
+
+            <!-- CADASTRO -->
+            <div id="cadastroForm" class="hidden">
+
+                <label>Nome:</label>
+                <input type="text">
+
+                <label>Email:</label>
+                <input type="email">
+
+                <label>Senha</label>
+                <input type="password">
+
+                <button class="btn">Cadastrar</button>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <script>
+
+        const btnLogin = document.getElementById("btnLogin")
+        const btnCadastro = document.getElementById("btnCadastro")
+
+        const login = document.getElementById("loginForm")
+        const cadastro = document.getElementById("cadastroForm")
+
+        btnLogin.onclick = () => {
+            login.classList.remove("hidden")
+            cadastro.classList.add("hidden")
+
+            btnLogin.classList.add("active")
+            btnCadastro.classList.remove("active")
+        }
+
+        btnCadastro.onclick = () => {
+            login.classList.add("hidden")
+            cadastro.classList.remove("hidden")
+
+            btnCadastro.classList.add("active")
+            btnLogin.classList.remove("active")
+        }
+
+    </script>
+
+</body>
+
+</html>

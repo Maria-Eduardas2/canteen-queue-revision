@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.layout {
+    display: flex;
+    height: 100vh;
+    background: #d9d9d9;
+}
+
+.sidebar {
+    width: 230px;
+    background: #FFF39C;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.menu h3 {
+    cursor: pointer;
+    margin-bottom: 5px;
+}
+
+.submenu {
+    list-style: none;
+    padding-left: 15px;
+    margin-top: 5px;
+}
+
+.submenu li {
+    cursor: pointer;
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.conteudo {
+    flex: 1;
+    padding: 40px;
+}
+
+.usuario {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.icone {
+    width: 35px;
+    height: 35px;
+    background: #FF9294;
+    border-radius: 50%;
+}
+
+.logo {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    width: 90px;
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Painel - Cantina</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="dashboard.ts"></script>
+</head>
+<body>
+
+    <div class="layout">
+
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+
+            <div class="menu">
+
+                <div class="menu-section">
+                    <h3 onclick="toggleMenu('produtos')">> Gerenciar produtos</h3>
+
+                    <ul id="produtos" class="submenu">
+                        <li onclick="abrirPagina('listar')">Listar produtos</li>
+                        <li onclick="abrirPagina('criar')">Criar produto</li>
+                        <li onclick="abrirPagina('editar')">Editar produto</li>
+                        <li onclick="abrirPagina('inativar')">Inativar produto</li>
+                    </ul>
+                </div>
+
+                <div class="menu-section">
+                    <h3 onclick="toggleMenu('pedidos')">> Gerenciar pedidos</h3>
+
+                    <ul id="pedidos" class="submenu">
+                        <li onclick="abrirPagina('addItem')">Adicionar item</li>
+                        <li onclick="abrirPagina('verPedido')">Visualizar pedido</li>
+                        <li onclick="abrirPagina('limparPedido')">Limpar pedido</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="usuario">
+                <div class="icone"></div>
+                <span>Usuário</span>
+            </div>
+
+        </div>
+
+        <!-- AREA PRINCIPAL -->
+        <div class="conteudo" id="conteudo">
+
+            <h2>Bem vindo</h2>
+
+        </div>
+
+        <img src="logo.png" class="logo">
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>
