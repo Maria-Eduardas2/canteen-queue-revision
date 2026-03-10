@@ -7,14 +7,18 @@ type Pagina =
   | "verPedido"
   | "limparPedido";
 
+/* MENU LATERAL */
+
 function toggleMenu(id: string): void {
   const menu = document.getElementById(id) as HTMLElement;
 
   if (!menu) return;
 
   menu.style.display =
-    menu.style.display === "none" ? "block" : "none";
+    menu.style.display === "block" ? "none" : "block";
 }
+
+/* ABRIR PAGINAS */
 
 function abrirPagina(pagina: Pagina): void {
   const area = document.getElementById("conteudo") as HTMLElement;
@@ -48,6 +52,15 @@ function abrirPagina(pagina: Pagina): void {
 
       <button id="salvar">Salvar</button>
     `;
+
+    const botao = document.getElementById("salvar");
+
+    botao?.addEventListener("click", () => {
+      const nome = (document.getElementById("nome") as HTMLInputElement).value;
+      const preco = (document.getElementById("preco") as HTMLInputElement).value;
+
+      console.log("Criar produto:", nome, preco);
+    });
   }
 
   if (pagina === "editar") {
@@ -104,6 +117,30 @@ function abrirPagina(pagina: Pagina): void {
         console.log("Pedido limpo");
       }
     });
-       console.log("script");
   }
 }
+
+/* MENU DO USUARIO (3 PONTOS) */
+
+function toggleUserMenu(): void {
+  const menu = document.getElementById("userMenu");
+
+  if (!menu) return;
+
+  menu.classList.toggle("hidden");
+}
+
+/* LOGOUT */
+
+function logout(): void {
+  alert("Saindo da conta...");
+
+  window.location.href = "index.html";
+}
+
+/* EXPOR FUNÇÕES PARA O HTML */
+
+(window as any).toggleMenu = toggleMenu;
+(window as any).abrirPagina = abrirPagina;
+(window as any).toggleUserMenu = toggleUserMenu;
+(window as any).logout = logout;

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Painel - Cantina</title>
     <link rel="stylesheet" href="dashboard.css">
-    <script src="dashboard.ts"></script>
+    <script type="module" src="dashboard.ts"></script>
 </head>
 <body>
 
@@ -39,10 +39,18 @@
 
             </div>
 
-            <div class="usuario">
-                <div class="icone"></div>
-                <span>Usuário</span>
+        <div class="usuario">
+            <div class="icone"></div>
+            <span>Usuário</span>
+
+            <div class="menu-usuario">
+                <button class="tres-pontos" onclick="toggleUserMenu()">⋮</button>
+
+                <div id="userMenu" class="dropdown hidden">
+                    <button onclick="logout()">Sair da conta</button>
+                </div>
             </div>
+        </div>
 
         </div>
 
@@ -56,8 +64,6 @@
         <img src="logo.png" class="logo">
 
     </div>
-
-    <script src="dashboard.js"></script>
 </body>
 
 </html>
